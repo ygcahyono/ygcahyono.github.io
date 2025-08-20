@@ -1,0 +1,20 @@
+# Site settings
+title: Yogi Cahyono
+description: Brief tagline about what you do
+email: yogitricahyono@gmail.com
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-seo-tag
+
+# Minima theme settings
+minima:
+  skin: classic
+  
+# Social links (optional - delete any you don't use)
+github_username: ygcahyono
+linkedin_username: yogitricahyono
+
+# Hide the default header and footer for a cleaner look
+header_pages: []
