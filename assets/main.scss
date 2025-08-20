@@ -2,28 +2,16 @@
 
 // Custom CSS to make it look like Dario's site
 
-// Overall layout
-.site-header {
-  display: none; // Hide the default header
-}
+// Keep header and footer visible - remove these lines
+// .site-header {
+//   display: none;
+// }
+// .site-footer {
+//   display: none;
+// }
 
-.site-footer {
-  display: none; // Hide the default footer
-}
-
-// More aggressive title hiding
-.site-title,
-.site-header .site-title,
-h1.site-title,
-.page-header h1,
-.post-header h1.post-title {
-  display: none !important;
-}
-
-// Hide any potential title containers
-.site-branding,
-.site-identity,
-.brand-header {
+// Only hide the duplicate large title in the main content
+.page-content h1:first-of-type {
   display: none !important;
 }
 
@@ -87,12 +75,12 @@ a {
 
 // Lists - restore bullet points for ML Projects
 ul {
-  padding-left: 20px;  // Add indentation
+  padding-left: 20px;
   margin: 0 0 20px 0;
   
   li {
     margin-bottom: 10px;
-    list-style-type: disc;  // Show bullet points
+    list-style-type: disc;
   }
 }
 
