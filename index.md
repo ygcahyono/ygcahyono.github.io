@@ -3,6 +3,8 @@ layout: home
 list_title: " "
 ---
 
+# About
+
 Yogi Cahyono's a Data Scientist at [TikTok Shop](https://www.linkedin.com/company/bytedance/posts/?feedView=all) South East Asia, one of the biggest e-commerce platforms in SEA. 
 
 I am here to share part of my years of work in data science. My day-to-day job is to support business decisions by any means, starting from ad-hoc to post-experimentation analysis, tracker implementation, dashboarding, and with an additional capability of delivering machine learning solutions.
