@@ -20,3 +20,5 @@ I am here to share part of my years of work in data science. My day-to-day job i
 - How to become Top Earner in Airbnb? (2018)  ·  [Kaggle](https://www.kaggle.com/code/yogi045/how-to-become-top-earner-in-airbnb) 
 - Churn Prediction of E-Commerce Customers using T-POT (2018)
 
+## Statistics and Probability
+- [A/B Experimentation](AB Test Understanding.md)
