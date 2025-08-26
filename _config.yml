@@ -16,5 +16,7 @@ minima:
 github_username: ygcahyono
 linkedin_username: yogitricahyono
 
-# Hide the default header and footer for a cleaner look
-header_pages: []
+# Show only specific pages in navigation (posts will be automatically excluded)
+header_pages:
+  - index.md
+  - datascience.md
