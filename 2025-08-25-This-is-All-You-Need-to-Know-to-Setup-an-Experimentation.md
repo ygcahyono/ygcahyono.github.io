@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Understanding of A/B Testing"
+layout: post
+title: "This is All You Need to Know to Setup an Experimentation"
+date: 2025-08-25 22:00:00
+categories: Statistics and Probability
+tags: [statistics, probability, experimentation, understanding]
 ---
 
 # Understanding of A/B Testing
