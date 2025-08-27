@@ -18,5 +18,5 @@ linkedin_username: yogitricahyono
 
 # Show only specific pages in navigation (posts will be automatically excluded)
 header_pages:
-  - index.md
   - datascience.md
+  - index.md
