@@ -17,4 +17,4 @@ permalink: /datascience/
 - Churn Prediction of E-Commerce Customers using T-POT (2018)
 
 ## Statistics and Probability
-- [A/B Experimentation](AB Test Understanding.md)
+- Experimentation · [All you need to know to setup an Experimentation](/statistics/and/probability/2025/08/25/This-is-All-You-Need-to-Know-to-Setup-an-Experimentation.html)
