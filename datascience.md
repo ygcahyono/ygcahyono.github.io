@@ -17,4 +17,5 @@ permalink: /datascience/
 - Churn Prediction of E-Commerce Customers using T-POT (2018)
 
 ## Statistics and Probability
+- T-Test Assumptions · [Why Your T-Test Results Might Be Wrong: The Assumptions You're Probably Ignoring](/statistics/and/probability/2025/12/03/Why-Your-T-Test-Results-Might-Be-Wrong-The-Assumptions-You-Are-Probably-Ignoring.html)
 - Experimentation · [All you need to know to setup an Experimentation](/statistics/and/probability/2025/08/25/This-is-All-You-Need-to-Know-to-Setup-an-Experimentation.html)

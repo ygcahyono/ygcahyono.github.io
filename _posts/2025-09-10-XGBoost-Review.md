@@ -1,3 +1,12 @@
+---
+layout: post
+title: "XGBoost Review"
+date: 2025-09-10 22:00:00
+categories: Machine Learning
+tags: [machine-learning, xgboost, ensemble]
+published: false
+---
+
 1. What is XGBoost
 
 XGBoost is the combination of the weak tree learners altogether where 

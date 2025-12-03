@@ -4,6 +4,7 @@ title: "Launch the first DBT Project with Snowflake"
 date: 2025-09-01 13:45:00
 categories: Analytics Tools
 tags: [ETL, Analytics, Tools]
+published: false
 ---
 
 This post is to help someone who are trying to understand the practical implementation of DBT (like me). On top of that in this guide, I will specifically use Snowflake plugin. Since, couple weeks back, I finished "Hands On Essentials" on Snowflake. So I thought it was pretty low hanging fruit to learn basic of dbt afterwards.
