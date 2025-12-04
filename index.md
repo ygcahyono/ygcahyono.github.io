@@ -13,6 +13,14 @@ Currently seeking senior analyst or data scientist roles in London's fintech/tec
 
 <small>**Recent Posts:**</small>
 
+<ul class="recent-posts">
+{% for post in site.posts limit:3 %}
+  <li>• <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}</li>
+{% endfor %}
+</ul>
+
+<!-- <small>**Recent Posts:**</small>
+
 <small>{% for post in site.posts limit:3 %}
 • [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}  
-{% endfor %}</small>
+{% endfor %}</small> -->
