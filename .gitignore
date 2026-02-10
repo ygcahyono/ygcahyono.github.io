@@ -8,3 +8,7 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+
+
+# Prompt Exclusion
+Clawd*.md
