@@ -38,3 +38,19 @@ ul li {
     font-size: 1.5em;
   }
 }
+
+/* Github, Edit, and Download dropdown are deleted on 10 February 2026 */
+/* Hide GitHub icon */                                                        
+.myst-fm-github-link {                                                        
+  display: none !important;                                                   
+}                                                                             
+                                                                              
+/* Hide Edit/Write icon */                                                    
+.myst-fm-edit-link {                                                          
+  display: none !important;                                                   
+}                                                                             
+                                                                              
+/* Hide Download icon */                                                      
+.myst-fm-downloads-dropdown {                                                 
+  display: none !important;                                                   
+}  
