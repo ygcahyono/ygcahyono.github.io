@@ -15,9 +15,9 @@ project:
     - title: ML Projects
       children:
         - file: ml-projects/index.md
-    - title: About
-      children:
-        - file: about.md
+    # - title: About
+    #   children:
+    #     - file: about.md
 
 site:
   template: book-theme
