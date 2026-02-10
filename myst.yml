@@ -1,0 +1,23 @@
+# Jupyter Book v2 (MyST) configuration
+# https://mystmd.org/guide/quickstart-jupyter-book
+
+version: 1
+
+project:
+  title: Yogi Tri Cahyono
+  github: https://github.com/ygcahyono/ygcahyono.github.io
+  toc:
+    - file: intro.md
+    - title: Statistics & Probability
+      children:
+        - file: statistics-and-probability/experimentation-setup.md
+        - file: statistics-and-probability/t-test-assumptions.md
+    - title: ML Projects
+      children:
+        - file: ml-projects/index.md
+    - title: About
+      children:
+        - file: about.md
+
+site:
+  template: book-theme

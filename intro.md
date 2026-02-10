@@ -1,7 +1,4 @@
----
-layout: page
-title: "About"
----
+# Yogi Tri Cahyono
 
 Yogi Cahyono's a Data Analyst at [TikTok Shop](https://www.linkedin.com/company/bytedance/posts/?feedView=all) South East Asia, one of the biggest e-commerce platforms in SEA. Have been working in tech companies for eight years.
 
@@ -9,18 +6,7 @@ UK-educated with MSc from Edinburgh and full work rights in the UK, no sponsorsh
 
 Currently seeking senior analyst or data scientist roles in London's fintech/tech sector, bringing deep expertise in Python, ML, A/B testing, and cross-functional collaboration to drive measurable business growth.
 
-<br><br>
+**Recent Posts:**
 
-<small>**Recent Posts:**</small>
-
-<ul class="recent-posts">
-{% for post in site.posts limit:3 %}
-  <li>• <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}</li>
-{% endfor %}
-</ul>
-
-<!-- <small>**Recent Posts:**</small>
-
-<small>{% for post in site.posts limit:3 %}
-• [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}  
-{% endfor %}</small> -->
+- [Why Your T-Test Results Might Be Wrong: The Assumptions You're Probably Ignoring](./statistics-and-probability/t-test-assumptions.md) - December 03, 2025
+- [This is All You Need to Know to Setup an Experimentation](./statistics-and-probability/experimentation-setup.md) - August 25, 2025
