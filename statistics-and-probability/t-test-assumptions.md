@@ -1,10 +1,6 @@
----
-layout: post
-title: "Why Your T-Test Results Might Be Wrong: The Assumptions You're Probably Ignoring"
-date: 2025-12-03 22:00:00
-categories: Statistics and Probability
-tags: [statistics, t-test, hypothesis-testing, assumptions, data-science]
----
+# Why Your T-Test Results Might Be Wrong: The Assumptions You're Probably Ignoring
+
+*December 03, 2025 · Statistics and Probability*
 
 When faced with a question like "Is surgery more expensive than therapy for fracture treatment?", it's tempting to jump straight into running a statistical test when we have the raw data ready. But as data scientists, we know that the most critical part of any analysis happens *before* we run the test. It's in the careful validation of our assumptions.
 
@@ -24,7 +20,7 @@ Before we can compare treatments, we need to control for confounding variables. 
 
 This is a fundamental principle in data science: **isolate the variables you want to study.** By controlling for diagnosis type, we ensure that any differences we find are truly due to treatment choice, not diagnosis complexity.
 
-![Sample data showing fracture diagnoses](/assets/images/df1.jpg)
+![Sample data showing fracture diagnoses](../_static/images/df1.jpg)
 
 ## Understanding T-Test Assumptions: Why They Matter
 
@@ -48,7 +44,7 @@ However, we should still verify this assumption. Here's my approach:
 
 Before running any statistical test, I always start with visualisation. Histograms with kernel density estimates give me an intuitive sense of the distribution shape. Are the distributions roughly bell-shaped? Are there obvious outliers or extreme skewness?
 
-![Histogram distributions of doctor fees by treatment](/assets/images/normal_distribution_img.jpg)
+![Histogram distributions of doctor fees by treatment](../_static/images/normal_distribution_img.jpg)
 
 In our case, the visualisation show approximately normal distributions for all treatment groups, with sample sizes ranging from 37 to 56 patients per group. The distributions appear reasonably symmetric, which is a good sign.
 
@@ -58,7 +54,7 @@ Visual inspection is subjective, so we complement it with a formal statistical t
 
 The test works by comparing our data's distribution to a perfect normal distribution. If the p-value is greater than our significance level (typically 0.05), we fail to reject the null hypothesis that the data is normally distributed.
 
-![Shapiro-Wilk test results showing normality assumptions met](/assets/images/normality_shapiro_wilk.png)
+![Shapiro-Wilk test results showing normality assumptions met](../_static/images/normality_shapiro_wilk.png)
 
 For all treatment groups in our analysis, the Shapiro-Wilk test returned p-values well above 0.05, confirming that we cannot reject the normality assumption. This is particularly important for the two groups we're comparing: Surgery (p = 0.967) and Therapy (p = 0.147).
 
@@ -102,7 +98,7 @@ Notice that we're using a **one-sided test** (alternative="greater") because we'
 
 Once we've done all the assumption checking, running the actual t-test is straightforward. Our automated function checks normality and variance, then selects the appropriate test (Student's or Welch's) and runs it.
 
-![T-test results showing Welch's t-test with p-value](/assets/images/t-test_result.jpg)
+![T-test results showing Welch's t-test with p-value](../_static/images/t-test_result.jpg)
 
 The results show that surgery is significantly more expensive than therapy (p < 0.05), allowing us to reject the null hypothesis.
 
@@ -143,5 +139,4 @@ The next time you're tempted to run a t-test immediately, pause and ask yourself
 
 ---
 
-All the code can be checked on my GitHub: https://github.com/ygcahyono/ds_personal_logging/blob/main/20251128-ab-testing-statistical-significance/002-lab-ttest.ipynb_
-
+All the code can be checked on my GitHub: [ds_personal_logging/002-lab-ttest.ipynb](https://github.com/ygcahyono/ds_personal_logging/blob/main/20251128-ab-testing-statistical-significance/002-lab-ttest.ipynb)
