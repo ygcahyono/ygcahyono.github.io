@@ -21,3 +21,5 @@ project:
 
 site:
   template: book-theme
+  options:                                                                    
+    hide_footer_links: true
