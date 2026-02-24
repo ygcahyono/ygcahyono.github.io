@@ -1,3 +1,7 @@
+---
+short_title: T-Test Assumptions
+---
+
 # Why Your T-Test Results Might Be Wrong: The Assumptions You're Probably Ignoring
 
 *December 03, 2025 · Statistics and Probability*

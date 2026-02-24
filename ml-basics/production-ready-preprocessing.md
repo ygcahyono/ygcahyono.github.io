@@ -1,3 +1,7 @@
+---
+short_title: Preprocessing Pipeline
+---
+
 # Production-Ready Preprocessing: Stateful vs Stateless Transforms
 
 Most ML tutorials show preprocessing as a single block of code. This works for experiments but breaks in production. The solution? Understand which operations are **stateful** vs **stateless**, and use the **fit/transform pattern**.

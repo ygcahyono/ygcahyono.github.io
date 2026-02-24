@@ -1,3 +1,7 @@
+---
+short_title: Imbalanced Classes
+---
+
 # Handling Imbalanced Classes in Machine Learning: A Practical Comparison
 
 When building machine learning models for real-world problems like fraud detection, disease diagnosis, or loan default prediction, you'll often encounter **imbalanced datasets** where one class significantly outnumbers the other. This article walks through a practical comparison of three approaches to handle this challenge using Logistic Regression.
