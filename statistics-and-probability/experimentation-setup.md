@@ -1,3 +1,7 @@
+---
+short_title: Experimentation Setup
+---
+
 # This is All You Need to Know to Setup an Experimentation
 
 *August 25, 2025 · Statistics and Probability*

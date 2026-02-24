@@ -8,6 +8,10 @@ project:
   github: https://github.com/ygcahyono/ygcahyono.github.io
   toc:
     - file: intro.md
+    - title: ML Basics
+      children:
+        - file: ml-basics/handling-imbalanced-classes.md
+        - file: ml-basics/production-ready-preprocessing.md
     - title: Statistics & Probability
       children:
         - file: statistics-and-probability/experimentation-setup.md
@@ -15,10 +19,7 @@ project:
     - title: ML Projects
       children:
         - file: ml-projects/index.md
-    - title: ML Basics
-      children:
-        - file: ml-basics/handling-imbalanced-classes.md
-        - file: ml-basics/production-ready-preprocessing.md
+
         
     # - title: About
     #   children:
