@@ -6,7 +6,7 @@ When building machine learning models for real-world problems like fraud detecti
 
 In our loan default prediction dataset, we have a classic imbalance problem:
 
-![Class Distribution](images/class-distribution.png)
+![Class Distribution](../_static/images/class-distribution.png)
 
 | Dataset | No Default (Class 0) | Default (Class 1) | Imbalance Ratio |
 |---------|---------------------|-------------------|-----------------|
@@ -71,7 +71,7 @@ logreg_smote.fit(X_train_smote, y_train_smote)
 - Generates new samples along the line between the sample and its neighbors
 - Result: Balanced training data with realistic synthetic examples
 
-![SMOTE Resampling](images/smote-resampling.png)
+![SMOTE Resampling](../_static/images/smote-resampling.png)
 
 **Important:** Only apply SMOTE to training data, NEVER to test data! The test set must represent real-world distribution.
 
@@ -85,11 +85,11 @@ logreg_smote.fit(X_train_smote, y_train_smote)
 | Balanced | 0.201 | 0.751 | 0.317 | 0.809 |
 | SMOTE | 0.210 | 0.439 | 0.284 | 0.753 |
 
-![Model Comparison](images/model-comparison.png)
+![Model Comparison](../_static/images/model-comparison.png)
 
 ### Confusion Matrices
 
-![Confusion Matrices](images/confusion-matrices.png)
+![Confusion Matrices](../_static/images/confusion-matrices.png)
 
 **Reading the confusion matrices:**
 - **Top-left (TN)**: Correctly predicted No Default

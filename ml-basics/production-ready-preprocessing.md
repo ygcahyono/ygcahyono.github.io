@@ -14,7 +14,7 @@ When you fit on all data (including test), your model "sees" information from th
 
 ## Three Types of Operations
 
-![Preprocessing Flow](images/preprocessing-flow.png)
+![Preprocessing Flow](../_static/images/preprocessing-flow.png)
 
 ### 1. Stateless (Blue) - No Learning Required
 
