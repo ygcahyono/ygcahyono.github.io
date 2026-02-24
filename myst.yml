@@ -15,6 +15,11 @@ project:
     - title: ML Projects
       children:
         - file: ml-projects/index.md
+    - title: ML Basics
+      children:
+        - file: ml-basics/handling-imbalanced-classes.md
+        - file: ml-basics/production-ready-preprocessing.md
+        
     # - title: About
     #   children:
     #     - file: about.md
