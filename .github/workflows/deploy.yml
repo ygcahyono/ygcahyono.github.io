@@ -48,6 +48,11 @@ jobs:
             echo "ERROR: No build output found" && exit 1
           fi
           cp CNAME "$BUILD_DIR/CNAME"
+          # Unlisted private dashboard: copy as-is to /dashboard/ on the deployed site.
+          if [ -d "dashboard" ]; then
+            mkdir -p "$BUILD_DIR/dashboard"
+            cp -R dashboard/. "$BUILD_DIR/dashboard/"
+          fi
           echo "BUILD_DIR=$BUILD_DIR" >> $GITHUB_ENV
 
       - name: Upload artifact

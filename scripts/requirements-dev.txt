@@ -1,0 +1,5 @@
+# Local-only dependencies for the private dashboard preprocessor.
+# scripts/build_journal_stats.py uses ONLY the Python standard library,
+# so no pip install is required. Tested with Python 3.11+.
+#
+# (Listed here for documentation; this file is intentionally empty.)
