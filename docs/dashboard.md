@@ -3,7 +3,7 @@
 > Lightweight feature documentation. MVP-level — covers the why, the how,
 > the trade-offs, and how to operate it.
 
-**Status:** shipped — `https://ygtc.online/dashboard/`
+**Status:** shipped — `https://ygtc.me/dashboard/`
 **Owner:** @ygcahyono
 **Last updated:** 2026-04-08
 
@@ -14,7 +14,7 @@
 I keep a personal journal as flat markdown in
 `~/Documents/Main Folders/Main/Journal .nosync/`. The folder lives outside
 this repo (and outside iCloud sync). I want a **private, evolving** page on
-my public Jupyter Book site (`ygtc.online`) that shows aggregated progress
+my public Jupyter Book site (`ygtc.me`) that shows aggregated progress
 — streaks, ratings, calendar heatmap — without ever exposing the raw
 journal text.
 
@@ -127,7 +127,7 @@ So `{raw} html` is silently dropped too.
 
 **Option D.** The dashboard is a single self-contained `dashboard/index.html`.
 The deploy workflow copies the `dashboard/` folder into the build output as
-its final step, so the file is served at `https://ygtc.online/dashboard/`.
+its final step, so the file is served at `https://ygtc.me/dashboard/`.
 
 ### Trade-offs accepted
 
@@ -210,7 +210,7 @@ git push
 
 GitHub Actions takes ~1 minute to redeploy. The live page is then at:
 
-> **https://ygtc.online/dashboard/**
+> **https://ygtc.me/dashboard/**
 
 ### 6.2 Automated daily refresh
 
@@ -338,8 +338,8 @@ self-host the file if this becomes a problem.
 | MyST build succeeds | `jupyter-book build --html` | 6 pages, no warnings |
 | Dashboard NOT in built sidebar | `grep -rl dashboard _build/html/ \| grep -v dashboard/` | 0 matches |
 | GitHub Actions deploy | `gh run watch` | ✅ success in ~50s |
-| Live page returns 200 | `curl -sI https://ygtc.online/dashboard/` | `HTTP/2 200` |
-| Live page has data + KPIs | `curl -s https://ygtc.online/dashboard/ \| grep -c ygtc-stats-data` | 6 matches |
+| Live page returns 200 | `curl -sI https://ygtc.me/dashboard/` | `HTTP/2 200` |
+| Live page has data + KPIs | `curl -s https://ygtc.me/dashboard/ \| grep -c ygtc-stats-data` | 6 matches |
 
 ---
 
