@@ -3,9 +3,67 @@
 > Lightweight feature documentation. MVP-level — covers the why, the how,
 > the trade-offs, and how to operate it.
 
-**Status:** shipped — `https://ygtc.me/dashboard/`
+**Status:** shipped — hub at `https://ygtc.me/dashboard/`, journal at
+`https://ygtc.me/dashboard/journal/`
 **Owner:** @ygcahyono
 **Last updated:** 2026-10-24
+
+---
+
+## 0. Project hub (`/dashboard/`) — start here
+
+`/dashboard/` is a hand-written hub page (`dashboard/index.html`) showing one
+tile per project I maintain. Tiles are rendered client-side from
+`dashboard/projects.json`. Each project lives in its own sub-folder
+(`dashboard/<id>/`) or links to an external URL. The journal dashboard
+described in the rest of this doc is the first project, at
+`dashboard/journal/`.
+
+### Adding a project
+
+1. Append an entry to `dashboard/projects.json`:
+
+   ```json
+   {
+     "id": "my-project",
+     "name": "My Project",
+     "icon": "🛠",
+     "description": "One line about what it is.",
+     "href": "my-project/",
+     "summary": "my-project/summary.json",
+     "stale_after_days": 7
+   }
+   ```
+
+   | Field | Required | Notes |
+   |---|---|---|
+   | `id`, `name`, `href` | ✅ | `href` is relative (`my-project/` → sub-page) or absolute `https://…` (opens in a new tab, tile shows ↗). |
+   | `icon`, `description` | – | Emoji + one line. |
+   | `summary` | – | Path to a tile-stats JSON. Omit for a plain link tile (no status dot). |
+   | `stale_after_days` | – | Tile turns amber when `summary.as_of` is older than this. |
+
+2. If it's a sub-page, create `dashboard/my-project/index.html` (keep
+   `<meta name="robots" content="noindex,nofollow">` and a `← All projects`
+   link to `../`).
+3. If it has stats, have whatever generates them write
+   `dashboard/my-project/summary.json` in the shared tile schema:
+
+   ```json
+   {
+     "as_of": "2026-10-24",
+     "stats": [{"label": "Streak", "value": "1 day"}, {"label": "Entries", "value": "61"}]
+   }
+   ```
+
+   `as_of` drives the health dot (green = fresh, amber = stale, grey = no
+   data). Keep `stats` to 2–3 short, **aggregate-only** values — the hub is
+   public like everything else here.
+4. Commit and push. CI copies the whole `dashboard/` folder verbatim; no
+   workflow change needed.
+
+Preview locally with `python3 -m http.server` from the repo root, then open
+`http://localhost:8000/dashboard/` (the hub uses `fetch`, so `file://`
+won't work).
 
 ---
 
@@ -45,7 +103,8 @@ Three layers, each owned independently:
 │   scripts/build_journal_stats.py    (stdlib-only)               │
 │           │                                                     │
 │           ├──▶ _data/journal_stats.json   (canonical, audit)    │
-│           └──▶ dashboard/index.html       (self-contained page) │
+│           ├──▶ dashboard/journal/index.html  (self-contained)   │
+│           └──▶ dashboard/journal/summary.json (hub tile)       │
 └─────────────────────────────────────────────────────────────────┘
                           │
                           │  git commit + push (idempotent)
@@ -125,9 +184,9 @@ So `{raw} html` is silently dropped too.
 
 ### Decision
 
-**Option D.** The dashboard is a single self-contained `dashboard/index.html`.
+**Option D.** The dashboard is a single self-contained `dashboard/journal/index.html`.
 The deploy workflow copies the `dashboard/` folder into the build output as
-its final step, so the file is served at `https://ygtc.me/dashboard/`.
+its final step, so the file is served at `https://ygtc.me/dashboard/journal/`.
 
 ### Trade-offs accepted
 
@@ -177,20 +236,20 @@ across all entries. One-offs are dropped.
 1. [x] `_data/journal_stats.json` contains no raw sentences, no names, no
        bold-highlighted entities. Only numbers, dates, heading labels.
 2. [x] The preprocessor never writes to any path inside the repo except
-       `_data/journal_stats.json` and `dashboard/index.html`.
+       `_data/journal_stats.json` and `dashboard/journal/`.
 3. [x] The dashboard page is NOT in `myst.yml` `toc`.
 4. [x] No other page on the site links to `/dashboard/` (verified via
        `grep -rl dashboard _build/html/` excluding the dashboard folder
        itself).
 5. [x] `<meta name="robots" content="noindex,nofollow">` is in the page.
 6. [x] Privacy grep returns zero hits:
-       `grep -i "ramadan|durian|interview|salary|stress" _data/journal_stats.json dashboard/index.html`
+       `grep -i "ramadan|durian|interview|salary|stress" _data/journal_stats.json dashboard/journal/*`
 
 To re-run the checklist after any preprocessor change:
 
 ```bash
 python3 scripts/build_journal_stats.py
-grep -i "ramadan|durian|interview|salary|stress" _data/journal_stats.json dashboard/index.html
+grep -i "ramadan|durian|interview|salary|stress" _data/journal_stats.json dashboard/journal/*
 # expect: zero matches
 ```
 
@@ -203,14 +262,14 @@ grep -i "ramadan|durian|interview|salary|stress" _data/journal_stats.json dashbo
 ```bash
 cd ~/Documents/Code\ Dont\ Change/Code/ygcahyono.github.io
 python3 scripts/build_journal_stats.py
-git add _data/journal_stats.json dashboard/index.html
+git add _data/journal_stats.json dashboard/journal
 git commit -m "chore: refresh journal stats"
 git push
 ```
 
 GitHub Actions takes ~1 minute to redeploy. The live page is then at:
 
-> **https://ygtc.me/dashboard/**
+> **https://ygtc.me/dashboard/journal/**
 
 ### 6.2 Automated daily refresh
 
@@ -226,7 +285,7 @@ The preprocessor is the schema. To add, say, "habit checkboxes":
 2. Add it to the `payload` dict in `build_payload()`.
 3. Add a new `<canvas>` and a Chart.js block in `DASHBOARD_JS` /
    `PAGE_TEMPLATE` (both inside the same Python file).
-4. Run the preprocessor once locally to regenerate `dashboard/index.html`.
+4. Run the preprocessor once locally to regenerate `dashboard/journal/index.html`.
 5. Commit, push. Done. No MyST or CI changes.
 
 ### 6.4 Rolling back
@@ -255,7 +314,10 @@ Three options, increasing severity:
 | `scripts/refresh-and-push.sh` | generated by installer | ❌ (gitignored — see note) | by `install-launchd.sh` |
 | `scripts/requirements-dev.txt` | hand-written | ✅ | – |
 | `_data/journal_stats.json` | generated | ✅ | by `build_journal_stats.py` |
-| `dashboard/index.html` | generated | ✅ | by `build_journal_stats.py` |
+| `dashboard/index.html` | hand-written (hub) | ✅ | – |
+| `dashboard/projects.json` | hand-written (tile list) | ✅ | – |
+| `dashboard/journal/index.html` | generated | ✅ | by `build_journal_stats.py` |
+| `dashboard/journal/summary.json` | generated | ✅ | by `build_journal_stats.py` |
 | `~/Library/LaunchAgents/online.ygtc.journal-stats.plist` | generated | ❌ (outside repo) | by `install-launchd.sh` |
 | `.github/workflows/deploy.yml` | hand-written | ✅ | – |
 | `docs/dashboard.md` | hand-written | ✅ | – (this file) |
@@ -345,6 +407,9 @@ self-host the file if this becomes a problem.
 
 ## 11. Changelog
 
+- **2026-10-24** — `/dashboard/` became a project hub (tiles from
+  `projects.json`); journal dashboard moved to `/dashboard/journal/` and
+  now also emits `summary.json` for its tile.
 - **2026-10-24** — Journal moved from `Journal .nosync/` to `Journal/`;
   updated `JOURNAL_DIR`. Folder is iCloud-synced, so it must stay pinned
   ("Keep Downloaded"): launchd can't fetch evicted files, and the

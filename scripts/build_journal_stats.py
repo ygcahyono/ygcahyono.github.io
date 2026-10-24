@@ -4,9 +4,10 @@ Preprocess private journal entries into a sanitized aggregate dataset and
 regenerate the self-contained public dashboard page.
 
 Inputs:  /Users/yogi/Documents/Main Folders/Main/Journal/*.md
-Outputs (both safe to commit):
+Outputs (all safe to commit):
   - _data/journal_stats.json             (canonical aggregate, inspectable)
-  - dashboard/daily-performance.md       (MyST page with data + CSS + JS inlined)
+  - dashboard/journal/index.html         (self-contained page, data + CSS + JS inlined)
+  - dashboard/journal/summary.json       (tile stats for the /dashboard/ hub)
 
 ONLY numeric aggregates, dates, and heading labels leave the journal folder.
 No raw body text, no names, no narrative sentences.
@@ -25,7 +26,8 @@ from typing import Any
 JOURNAL_DIR = Path("/Users/yogi/Documents/Main Folders/Main/Journal")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_OUTPUT = REPO_ROOT / "_data" / "journal_stats.json"
-PAGE_OUTPUT = REPO_ROOT / "dashboard" / "index.html"
+PAGE_OUTPUT = REPO_ROOT / "dashboard" / "journal" / "index.html"
+SUMMARY_OUTPUT = REPO_ROOT / "dashboard" / "journal" / "summary.json"
 
 FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})\.md$")
 RATING_RE = re.compile(r"Rating:\s*(\d+)\s*/\s*10", re.IGNORECASE)
@@ -214,6 +216,8 @@ def build_payload() -> dict[str, Any] | None:
 
 DASHBOARD_CSS = """
 #ygtc-dashboard{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:960px;margin:0 auto}
+#ygtc-dashboard .ygtc-back{font-size:.85rem;color:#6a737d;text-decoration:none}
+#ygtc-dashboard .ygtc-back:hover{text-decoration:underline}
 #ygtc-dashboard .ygtc-dash-sub{color:#6a737d;font-size:.9rem;margin-top:0}
 #ygtc-dashboard .ygtc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1.5rem 0 2rem}
 #ygtc-dashboard .ygtc-card{background:rgba(127,127,127,.08);border:1px solid rgba(127,127,127,.2);border-radius:10px;padding:.9rem 1rem}
@@ -343,6 +347,7 @@ __CSS__
 </head>
 <body>
 <div id="ygtc-dashboard">
+  <a class="ygtc-back" href="../">← All projects</a>
   <h1>Daily Performance</h1>
   <p class="ygtc-dash-sub">Private dashboard — aggregates only. Last refreshed <span id="ygtc-generated-at">…</span>.</p>
 
@@ -376,7 +381,7 @@ __CSS__
   <p class="ygtc-section-sub">Most common journal sections.</p>
   <div class="ygtc-chart-wrap"><canvas id="ygtc-tags-chart"></canvas></div>
 
-  <p class="ygtc-dash-footer">Unlisted. Do not share. Generated locally from <code>Journal .nosync</code>.</p>
+  <p class="ygtc-dash-footer">Unlisted. Do not share. Generated locally from <code>Journal/</code>.</p>
 </div>
 
 <script id="ygtc-stats-data" type="application/json">
@@ -399,6 +404,25 @@ def render_page(payload: dict[str, Any]) -> str:
     return page
 
 
+def build_summary(payload: dict[str, Any]) -> dict[str, Any]:
+    # Tile schema shared by every project on the hub: see docs/dashboard.md.
+    # as_of = last entry date, so the tile goes stale when journaling stops
+    # or the nightly refresh breaks.
+    streak = payload["current_streak"]
+    avg = payload["avg_rating_30d"]
+    return {
+        "as_of": max(
+            (d["date"] for d in payload["calendar"] if d["word_count"] is not None),
+            default=None,
+        ),
+        "stats": [
+            {"label": "Streak", "value": f"{streak} day{'' if streak == 1 else 's'}"},
+            {"label": "Entries", "value": str(payload["total_entries"])},
+            {"label": "Avg 30d", "value": "–" if avg is None else f"{avg:.1f}"},
+        ],
+    }
+
+
 def _strip_ts(b: bytes) -> bytes:
     return re.sub(rb'"generated_at":\s*"[^"]*",?\s*\n?', b"", b)
 
@@ -418,9 +442,11 @@ def main() -> int:
 
     json_bytes = (json.dumps(payload, indent=2) + "\n").encode("utf-8")
     page_bytes = render_page(payload).encode("utf-8")
+    summary_bytes = (json.dumps(build_summary(payload), indent=2) + "\n").encode("utf-8")
 
     json_changed = write_if_changed(JSON_OUTPUT, json_bytes)
     page_changed = write_if_changed(PAGE_OUTPUT, page_bytes)
+    page_changed = write_if_changed(SUMMARY_OUTPUT, summary_bytes) or page_changed
 
     n = payload["total_entries"]
     if json_changed or page_changed:
