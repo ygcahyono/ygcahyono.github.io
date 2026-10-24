@@ -5,25 +5,25 @@
 
 **Status:** shipped — `https://ygtc.me/dashboard/`
 **Owner:** @ygcahyono
-**Last updated:** 2026-04-08
+**Last updated:** 2026-10-24
 
 ---
 
 ## 1. Problem statement
 
 I keep a personal journal as flat markdown in
-`~/Documents/Main Folders/Main/Journal .nosync/`. The folder lives outside
-this repo (and outside iCloud sync). I want a **private, evolving** page on
-my public Jupyter Book site (`ygtc.me`) that shows aggregated progress
-— streaks, ratings, calendar heatmap — without ever exposing the raw
-journal text.
+`~/Documents/Main Folders/Main/Journal/`. The folder lives outside
+this repo and is iCloud-synced, pinned with Finder's "Keep Downloaded".
+I want a **private, evolving** page on my public Jupyter Book site
+(`ygtc.me`) that shows aggregated progress — streaks, ratings, calendar
+heatmap — without ever exposing the raw journal text.
 
 ### Constraints
 
 | # | Constraint | Implication |
 |---|---|---|
 | C1 | Site is **MyST / Jupyter Book v2**, deployed via GitHub Actions to public GitHub Pages. | No backend, no auth, no private routes. Anything served is potentially world-readable. |
-| C2 | Journal lives in a `.nosync` folder on my Mac. | GitHub Actions cannot read it during build. Any preprocessing must run locally. |
+| C2 | Journal lives in a local (iCloud-pinned) folder on my Mac. | GitHub Actions cannot read it during build. Any preprocessing must run locally. |
 | C3 | Only reliably-structured field per entry is `**Rating: X/10**`. Sections are free-form. | Heuristic extraction; tolerate missing fields. |
 | C4 | "Private" really means: **aggregate-only data leaves my Mac**, plus an unlisted URL. | Two layers of defense — sanitization at build time, obscurity at serve time. |
 
@@ -39,7 +39,7 @@ Three layers, each owned independently:
 ┌─────────────────────────────────────────────────────────────────┐
 │ Layer 1 — Local Mac only                                        │
 │                                                                 │
-│   Journal .nosync/*.md                                          │
+│   Journal/*.md                                                  │
 │           │                                                     │
 │           ▼                                                     │
 │   scripts/build_journal_stats.py    (stdlib-only)               │
@@ -345,5 +345,9 @@ self-host the file if this becomes a problem.
 
 ## 11. Changelog
 
+- **2026-10-24** — Journal moved from `Journal .nosync/` to `Journal/`;
+  updated `JOURNAL_DIR`. Folder is iCloud-synced, so it must stay pinned
+  ("Keep Downloaded"): launchd can't fetch evicted files, and the
+  preprocessor now aborts on any unreadable entry rather than skip it.
 - **2026-04-08** — Initial release. Streaks, calendar heatmap, rating
   timeline, section frequency. Daily launchd refresh.
