@@ -7,5 +7,14 @@
     "href": "journal/",
     "summary": "journal/summary.json",
     "stale_after_days": 2
+  },
+  {
+    "id": "servecoach",
+    "name": "ServeCoach",
+    "icon": "🎾",
+    "description": "Serve-coaching app — last code change and commit activity.",
+    "href": "https://github.com/ygcahyono/servecoach",
+    "summary": "servecoach/summary.json",
+    "stale_after_days": 7
   }
 ]

@@ -61,6 +61,23 @@ described in the rest of this doc is the first project, at
 4. Commit and push. CI copies the whole `dashboard/` folder verbatim; no
    workflow change needed.
 
+### Code-folder tiles (`scripts/build_folder_activity.py`)
+
+For a local git project, `python3 scripts/build_folder_activity.py <id> <folder>`
+writes `dashboard/<id>/summary.json` with *Last change*, *Commits 30d* and
+*Uncommitted*. "Last change" is the newest of the last commit and the mtime
+of any dirty/untracked file — raw mtimes alone are useless because a
+re-clone or sync touches every file. Only dates and counts are emitted
+(no file names, no commit messages), so it's safe for private repos.
+
+To refresh it nightly, add the script call and `dashboard/<id>` to the
+runner in **both** `scripts/install-launchd.sh` (template) and
+`scripts/refresh-and-push.sh`. A failure there is logged but does not
+block the other tiles; the tile just goes stale.
+
+Current projects: `journal` (sub-page), `servecoach` (links to the private
+GitHub repo, stale after 7 days).
+
 Preview locally with `python3 -m http.server` from the repo root, then open
 `http://localhost:8000/dashboard/` (the hub uses `fetch`, so `file://`
 won't work).
@@ -318,6 +335,8 @@ Three options, increasing severity:
 | `dashboard/projects.json` | hand-written (tile list) | ✅ | – |
 | `dashboard/journal/index.html` | generated | ✅ | by `build_journal_stats.py` |
 | `dashboard/journal/summary.json` | generated | ✅ | by `build_journal_stats.py` |
+| `scripts/build_folder_activity.py` | hand-written | ✅ | – |
+| `dashboard/servecoach/summary.json` | generated | ✅ | by `build_folder_activity.py` |
 | `~/Library/LaunchAgents/online.ygtc.journal-stats.plist` | generated | ❌ (outside repo) | by `install-launchd.sh` |
 | `.github/workflows/deploy.yml` | hand-written | ✅ | – |
 | `docs/dashboard.md` | hand-written | ✅ | – (this file) |
@@ -407,6 +426,8 @@ self-host the file if this becomes a problem.
 
 ## 11. Changelog
 
+- **2026-10-24** — Added ServeCoach tile: `build_folder_activity.py` reports
+  git-based last-change date for a code folder; runs in the nightly job.
 - **2026-10-24** — `/dashboard/` became a project hub (tiles from
   `projects.json`); journal dashboard moved to `/dashboard/journal/` and
   now also emits `summary.json` for its tile.
