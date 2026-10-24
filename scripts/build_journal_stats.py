@@ -3,7 +3,7 @@
 Preprocess private journal entries into a sanitized aggregate dataset and
 regenerate the self-contained public dashboard page.
 
-Inputs:  /Users/yogi/Documents/Main Folders/Main/Journal .nosync/*.md
+Inputs:  /Users/yogi/Documents/Main Folders/Main/Journal/*.md
 Outputs (both safe to commit):
   - _data/journal_stats.json             (canonical aggregate, inspectable)
   - dashboard/daily-performance.md       (MyST page with data + CSS + JS inlined)
@@ -22,7 +22,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-JOURNAL_DIR = Path("/Users/yogi/Documents/Main Folders/Main/Journal .nosync")
+JOURNAL_DIR = Path("/Users/yogi/Documents/Main Folders/Main/Journal")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_OUTPUT = REPO_ROOT / "_data" / "journal_stats.json"
 PAGE_OUTPUT = REPO_ROOT / "dashboard" / "index.html"
