@@ -53,8 +53,10 @@ def parse_entry(path: Path) -> dict[str, Any] | None:
     entry_date = m.group(1)
     try:
         text = path.read_text(encoding="utf-8")
-    except Exception:
-        return None
+    except Exception as exc:
+        # Fail loudly: a silently skipped entry (e.g. an iCloud-evicted file
+        # that launchd can't download) would publish wrong stats.
+        sys.exit(f"Could not read {path}: {exc}")
 
     rating_match = RATING_RE.search(text)
     rating = int(rating_match.group(1)) if rating_match else None
