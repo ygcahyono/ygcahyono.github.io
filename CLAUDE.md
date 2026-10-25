@@ -10,6 +10,8 @@ Read `docs/dashboard.md` §0 before touching anything under `dashboard/`.
 - `dashboard/index.html` — hand-written hub; renders one tile per entry in
   `dashboard/projects.json`. Each tile can show stats from a per-project
   `summary.json` (`{"as_of": "YYYY-MM-DD", "stats": [{label, value}]}`).
+- Tiles are grouped under headings by each entry's `group`: **Inner Work**
+  (self-development) and **Revenue** (money-making).
 - To add a project: append to `projects.json`, add `dashboard/<id>/` (or use an
   external `https://` href), optionally emit `dashboard/<id>/summary.json`.
 - CI copies `dashboard/` verbatim — MyST never renders it (it strips `<script>`).

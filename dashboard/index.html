@@ -29,13 +29,15 @@ h1{margin:0 0 .25rem}
 .stats b{display:block;font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 .foot{margin-top:auto;font-size:.75rem;color:var(--muted)}
 .empty{color:var(--muted)}
+.group{margin:0 0 2rem}
+.group h2{margin:0 0 .75rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 </style>
 </head>
 <body>
 <main>
   <h1>Projects</h1>
   <p class="sub">Things I'm maintaining. Private — aggregates only.</p>
-  <div id="grid" class="grid"><p class="empty">Loading…</p></div>
+  <div id="groups"><p class="empty">Loading…</p></div>
 </main>
 <script>
 (function(){
@@ -69,16 +71,25 @@ h1{margin:0 0 .25rem}
     return a;
   }
   function getJSON(url){return fetch(url,{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
-  var grid=document.getElementById("grid");
+  var root=document.getElementById("groups");
   getJSON("projects.json").then(function(projects){
     return Promise.all(projects.map(function(p){
       return p.summary?getJSON(p.summary).catch(function(){return null}):Promise.resolve(null);
     })).then(function(summaries){
-      grid.innerHTML="";
-      if(!projects.length){grid.appendChild(el("p","empty","No projects yet."));return}
-      projects.forEach(function(p,i){grid.appendChild(tile(p,summaries[i]))});
+      root.innerHTML="";
+      if(!projects.length){root.appendChild(el("p","empty","No projects yet."));return}
+      // One headed section per group, in order of first appearance.
+      var grids={};
+      projects.forEach(function(p,i){
+        var g=p.group||"Other";
+        if(!grids[g]){
+          var sec=el("section","group");sec.appendChild(el("h2",null,g));
+          grids[g]=el("div","grid");sec.appendChild(grids[g]);root.appendChild(sec);
+        }
+        grids[g].appendChild(tile(p,summaries[i]));
+      });
     });
-  }).catch(function(e){grid.innerHTML="";grid.appendChild(el("p","empty","Couldn't load projects.json ("+e.message+")."))});
+  }).catch(function(e){root.innerHTML="";root.appendChild(el("p","empty","Couldn't load projects.json ("+e.message+")."))});
 })();
 </script>
 </body>

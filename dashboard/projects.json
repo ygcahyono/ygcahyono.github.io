@@ -2,6 +2,7 @@
   {
     "id": "journal",
     "name": "Journal",
+    "group": "Inner Work",
     "icon": "📓",
     "description": "Daily reflection log — streaks, ratings, heatmap.",
     "href": "journal/",
@@ -11,6 +12,7 @@
   {
     "id": "servecoach",
     "name": "ServeCoach",
+    "group": "Revenue",
     "icon": "🎾",
     "description": "Serve-coaching app — last code change and commit activity.",
     "href": "https://github.com/ygcahyono/servecoach",

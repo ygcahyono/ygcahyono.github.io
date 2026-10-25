@@ -27,6 +27,7 @@ described in the rest of this doc is the first project, at
    {
      "id": "my-project",
      "name": "My Project",
+     "group": "Revenue",
      "icon": "🛠",
      "description": "One line about what it is.",
      "href": "my-project/",
@@ -38,6 +39,7 @@ described in the rest of this doc is the first project, at
    | Field | Required | Notes |
    |---|---|---|
    | `id`, `name`, `href` | ✅ | `href` is relative (`my-project/` → sub-page) or absolute `https://…` (opens in a new tab, tile shows ↗). |
+   | `group` | – | Section heading the tile sits under. Current groups: **Inner Work** (self-development), **Revenue** (money-making). Sections appear in order of first use; missing → "Other". |
    | `icon`, `description` | – | Emoji + one line. |
    | `summary` | – | Path to a tile-stats JSON. Omit for a plain link tile (no status dot). |
    | `stale_after_days` | – | Tile turns amber when `summary.as_of` is older than this. |
@@ -426,6 +428,9 @@ self-host the file if this becomes a problem.
 
 ## 11. Changelog
 
+- **2026-10-25** — Hub tiles grouped under headings (`group` field):
+  Inner Work (Journal), Revenue (ServeCoach). Journal tile shows latest
+  entry date instead of 30-day average.
 - **2026-10-24** — Added ServeCoach tile: `build_folder_activity.py` reports
   git-based last-change date for a code folder; runs in the nightly job.
 - **2026-10-24** — `/dashboard/` became a project hub (tiles from
