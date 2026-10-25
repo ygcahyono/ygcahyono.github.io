@@ -409,16 +409,17 @@ def build_summary(payload: dict[str, Any]) -> dict[str, Any]:
     # as_of = last entry date, so the tile goes stale when journaling stops
     # or the nightly refresh breaks.
     streak = payload["current_streak"]
-    avg = payload["avg_rating_30d"]
+    latest = max(
+        (d["date"] for d in payload["calendar"] if d["word_count"] is not None),
+        default=None,
+    )
     return {
-        "as_of": max(
-            (d["date"] for d in payload["calendar"] if d["word_count"] is not None),
-            default=None,
-        ),
+        "as_of": latest,
         "stats": [
             {"label": "Streak", "value": f"{streak} day{'' if streak == 1 else 's'}"},
             {"label": "Entries", "value": str(payload["total_entries"])},
-            {"label": "Avg 30d", "value": "–" if avg is None else f"{avg:.1f}"},
+            {"label": "Latest", "value": "–" if latest is None
+                else datetime.strptime(latest, "%Y-%m-%d").strftime("%-d %b")},
         ],
     }
 
