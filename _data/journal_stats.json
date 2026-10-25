@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-24T01:00:49Z",
-  "total_entries": 61,
+  "generated_at": "2026-10-25T16:30:06Z",
+  "total_entries": 62,
   "date_range": {
     "start": "2026-03-18",
-    "end": "2026-10-24"
+    "end": "2026-10-25"
   },
-  "current_streak": 1,
+  "current_streak": 2,
   "longest_streak": 6,
   "consistency": {
-    "last_30": 16.7,
-    "last_90": 7.8,
-    "last_365": 16.7
+    "last_30": 20.0,
+    "last_90": 8.9,
+    "last_365": 17.0
   },
   "avg_rating_30d": 7.0,
   "rating_rolling_7d": [
@@ -896,6 +896,10 @@
     },
     {
       "date": "2026-10-24",
+      "avg": 7.0
+    },
+    {
+      "date": "2026-10-25",
       "avg": 7.0
     }
   ],
@@ -2004,16 +2008,21 @@
       "date": "2026-10-24",
       "rating": 7,
       "word_count": 103
+    },
+    {
+      "date": "2026-10-25",
+      "rating": 7,
+      "word_count": 113
     }
   ],
   "tag_frequency": [
     {
       "tag": "journal entry",
-      "count": 55
+      "count": 56
     },
     {
       "tag": "reflection & rating",
-      "count": 55
+      "count": 56
     },
     {
       "tag": "professional",
