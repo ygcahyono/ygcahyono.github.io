@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-29T16:30:00Z",
-  "total_entries": 65,
+  "generated_at": "2026-10-30T16:30:02Z",
+  "total_entries": 66,
   "date_range": {
     "start": "2026-03-18",
-    "end": "2026-10-29"
+    "end": "2026-10-30"
   },
-  "current_streak": 5,
+  "current_streak": 1,
   "longest_streak": 6,
   "consistency": {
-    "last_30": 26.7,
-    "last_90": 12.2,
-    "last_365": 17.8
+    "last_30": 30.0,
+    "last_90": 13.3,
+    "last_365": 18.1
   },
-  "avg_rating_30d": 7.2,
+  "avg_rating_30d": 7.0,
   "rating_rolling_7d": [
     {
       "date": "2026-03-18",
@@ -917,6 +917,10 @@
     {
       "date": "2026-10-29",
       "avg": 7.2
+    },
+    {
+      "date": "2026-10-30",
+      "avg": 7.0
     }
   ],
   "calendar": [
@@ -2049,16 +2053,21 @@
       "date": "2026-10-29",
       "rating": null,
       "word_count": null
+    },
+    {
+      "date": "2026-10-30",
+      "rating": 6,
+      "word_count": 169
     }
   ],
   "tag_frequency": [
     {
       "tag": "journal entry",
-      "count": 59
+      "count": 60
     },
     {
       "tag": "reflection & rating",
-      "count": 59
+      "count": 60
     },
     {
       "tag": "professional",
@@ -2074,7 +2083,7 @@
     },
     {
       "tag": "professional development",
-      "count": 4
+      "count": 5
     },
     {
       "tag": "personal development",
