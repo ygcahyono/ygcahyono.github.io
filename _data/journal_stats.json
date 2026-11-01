@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-31T04:08:23Z",
-  "total_entries": 66,
+  "generated_at": "2026-11-01T16:30:05Z",
+  "total_entries": 67,
   "date_range": {
     "start": "2026-03-18",
-    "end": "2026-10-31"
+    "end": "2026-11-01"
   },
-  "current_streak": 1,
+  "current_streak": 2,
   "longest_streak": 6,
   "consistency": {
     "last_30": 30.0,
-    "last_90": 13.3,
-    "last_365": 18.1
+    "last_90": 14.4,
+    "last_365": 18.4
   },
-  "avg_rating_30d": 7.0,
+  "avg_rating_30d": 7.14,
   "rating_rolling_7d": [
     {
       "date": "2026-03-18",
@@ -924,7 +924,11 @@
     },
     {
       "date": "2026-10-31",
-      "avg": 7.0
+      "avg": 7.17
+    },
+    {
+      "date": "2026-11-01",
+      "avg": 7.2
     }
   ],
   "calendar": [
@@ -2065,6 +2069,11 @@
     },
     {
       "date": "2026-10-31",
+      "rating": 8,
+      "word_count": 113
+    },
+    {
+      "date": "2026-11-01",
       "rating": null,
       "word_count": null
     }
@@ -2072,11 +2081,11 @@
   "tag_frequency": [
     {
       "tag": "journal entry",
-      "count": 60
+      "count": 61
     },
     {
       "tag": "reflection & rating",
-      "count": 60
+      "count": 61
     },
     {
       "tag": "professional",
@@ -2084,7 +2093,7 @@
     },
     {
       "tag": "social",
-      "count": 11
+      "count": 12
     },
     {
       "tag": "personal",
