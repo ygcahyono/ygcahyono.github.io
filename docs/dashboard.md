@@ -89,7 +89,7 @@ won't work).
 ## 1. Problem statement
 
 I keep a personal journal as flat markdown in
-`~/Documents/Main Folders/Main/Journal/`. The folder lives outside
+`~/Documents/life-love-distraction/100 Daily/` (an Obsidian vault). The folder lives outside
 this repo and is iCloud-synced, pinned with Finder's "Keep Downloaded".
 I want a **private, evolving** page on my public Jupyter Book site
 (`ygtc.me`) that shows aggregated progress — streaks, ratings, calendar
@@ -431,6 +431,15 @@ self-host the file if this becomes a problem.
 - **2026-10-25** — Hub tiles grouped under headings (`group` field):
   Inner Work (Journal), Revenue (ServeCoach). Journal tile shows latest
   entry date instead of 30-day average.
+- **2026-11-13** — Journal source moved to `life-love-distraction/100 Daily/`.
+  All of `Main/Journal/` (71 entries plus the writing-coach skill, `writing-progress.md`,
+  `tennis_journal.md`, `Coach Feedback/`) was moved in; there were no name collisions.
+  30 odd-named day files (`01 January 2024.md`, `… (1).md`, `… 2.md`,
+  `… T…Z.md`, `… Journal.md`) were renamed or merged into `YYYY-MM-DD.md`
+  (duplicates deleted; differing text appended under a `<!-- merged from -->`
+  marker). Entries now go back to 2020-05-14, and only 2026 entries carry ratings, so
+  the heatmap marks unrated entries in blue-gray and opens scrolled to the
+  latest week, and the rating chart starts at the first rated day.
 - **2026-10-24** — Added ServeCoach tile: `build_folder_activity.py` reports
   git-based last-change date for a code folder; runs in the nightly job.
 - **2026-10-24** — `/dashboard/` became a project hub (tiles from

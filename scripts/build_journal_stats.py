@@ -3,7 +3,7 @@
 Preprocess private journal entries into a sanitized aggregate dataset and
 regenerate the self-contained public dashboard page.
 
-Inputs:  /Users/yogi/Documents/Main Folders/Main/Journal/*.md
+Inputs:  /Users/yogi/Documents/life-love-distraction/100 Daily/*.md
 Outputs (all safe to commit):
   - _data/journal_stats.json             (canonical aggregate, inspectable)
   - dashboard/journal/index.html         (self-contained page, data + CSS + JS inlined)
@@ -23,7 +23,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-JOURNAL_DIR = Path("/Users/yogi/Documents/Main Folders/Main/Journal")
+JOURNAL_DIR = Path("/Users/yogi/Documents/life-love-distraction/100 Daily")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_OUTPUT = REPO_ROOT / "_data" / "journal_stats.json"
 PAGE_OUTPUT = REPO_ROOT / "dashboard" / "journal" / "index.html"
@@ -238,6 +238,7 @@ DASHBOARD_CSS = """
 #ygtc-dashboard .ygtc-heatmap-cell[data-level="8"]{background:#2f9028}
 #ygtc-dashboard .ygtc-heatmap-cell[data-level="9"]{background:#22711a}
 #ygtc-dashboard .ygtc-heatmap-cell[data-level="10"]{background:#155212}
+#ygtc-dashboard .ygtc-heatmap-cell[data-level="e"]{background:#9db4c8}
 #ygtc-dashboard .ygtc-legend{display:flex;align-items:center;gap:4px;font-size:.75rem;color:#6a737d;margin-top:.6rem}
 #ygtc-dashboard .ygtc-legend-cell{display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(127,127,127,.15)}
 #ygtc-dashboard .ygtc-legend-cell[data-level="2"]{background:#c6e48b}
@@ -245,6 +246,7 @@ DASHBOARD_CSS = """
 #ygtc-dashboard .ygtc-legend-cell[data-level="6"]{background:#5bb84a}
 #ygtc-dashboard .ygtc-legend-cell[data-level="8"]{background:#2f9028}
 #ygtc-dashboard .ygtc-legend-cell[data-level="10"]{background:#155212}
+#ygtc-dashboard .ygtc-legend-cell[data-level="e"]{background:#9db4c8;margin-left:1rem}
 #ygtc-dashboard .ygtc-chart-wrap{position:relative;height:260px;margin:.5rem 0 1.5rem}
 #ygtc-dashboard .ygtc-dash-footer{margin-top:3rem;border-top:1px solid rgba(127,127,127,.2);padding-top:.75rem;color:#6a737d;font-size:.75rem}
 """.strip()
@@ -282,18 +284,23 @@ DASHBOARD_JS = r"""
       data.calendar.forEach(function(row){
         var cell=document.createElement("div");
         cell.className="ygtc-heatmap-cell";
-        cell.setAttribute("data-level",String(ratingLevel(row.rating)));
-        cell.title=row.date+(row.rating==null?" — no entry":" — rating "+row.rating+"/10");
+        var hasEntry=row.word_count!=null;
+        cell.setAttribute("data-level",row.rating==null?(hasEntry?"e":"0"):String(ratingLevel(row.rating)));
+        cell.title=row.date+(row.rating!=null?" — rating "+row.rating+"/10":hasEntry?" — entry, no rating":" — no entry");
         host.appendChild(cell);
       });
+      host.scrollLeft=host.scrollWidth;
     }
 
     if(typeof Chart==="undefined")return;
 
     var rc=$("ygtc-rating-chart");
     if(rc){
-      var labels=data.calendar.map(function(r){return r.date});
-      var daily=data.calendar.map(function(r){return r.rating});
+      var rated=data.calendar.filter(function(r){return r.rating!=null});
+      var since=rated.length?rated[0].date:data.calendar[0].date;
+      var cal=data.calendar.filter(function(r){return r.date>=since});
+      var labels=cal.map(function(r){return r.date});
+      var daily=cal.map(function(r){return r.rating});
       var rollingMap={};
       (data.rating_rolling_7d||[]).forEach(function(r){rollingMap[r.date]=r.avg});
       var rolling=labels.map(function(d){return rollingMap[d]==null?null:rollingMap[d]});
@@ -360,7 +367,7 @@ __CSS__
   </div>
 
   <h2>Calendar heatmap</h2>
-  <p class="ygtc-section-sub">Each cell is a day. Color intensity = daily rating. Gray = no entry.</p>
+  <p class="ygtc-section-sub">Each cell is a day. Color intensity = daily rating. Blue-gray = entry without a rating. Gray = no entry.</p>
   <div id="ygtc-heatmap" class="ygtc-heatmap"></div>
   <div class="ygtc-legend">
     <span>Lower</span>
@@ -371,6 +378,8 @@ __CSS__
     <span class="ygtc-legend-cell" data-level="8"></span>
     <span class="ygtc-legend-cell" data-level="10"></span>
     <span>Higher</span>
+    <span class="ygtc-legend-cell" data-level="e"></span>
+    <span>No rating</span>
   </div>
 
   <h2>Rating timeline</h2>
