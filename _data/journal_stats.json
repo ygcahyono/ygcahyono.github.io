@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-09T16:30:02Z",
+  "generated_at": "2026-11-12T16:30:05Z",
   "total_entries": 71,
   "date_range": {
     "start": "2026-03-18",
-    "end": "2026-11-09"
+    "end": "2026-11-12"
   },
-  "current_streak": 3,
+  "current_streak": 0,
   "longest_streak": 6,
   "consistency": {
     "last_30": 40.0,
@@ -961,6 +961,18 @@
     {
       "date": "2026-11-09",
       "avg": 8.25
+    },
+    {
+      "date": "2026-11-10",
+      "avg": 8.67
+    },
+    {
+      "date": "2026-11-11",
+      "avg": 8.67
+    },
+    {
+      "date": "2026-11-12",
+      "avg": 8.67
     }
   ],
   "calendar": [
@@ -2146,6 +2158,21 @@
     },
     {
       "date": "2026-11-09",
+      "rating": null,
+      "word_count": null
+    },
+    {
+      "date": "2026-11-10",
+      "rating": null,
+      "word_count": null
+    },
+    {
+      "date": "2026-11-11",
+      "rating": null,
+      "word_count": null
+    },
+    {
+      "date": "2026-11-12",
       "rating": null,
       "word_count": null
     }
