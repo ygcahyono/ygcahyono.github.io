@@ -24,8 +24,8 @@
     "name": "NanoClaw",
     "group": "Inner Work",
     "icon": "🦞",
-    "description": "Personal WhatsApp AI assistant — last code change and commit activity.",
-    "href": "https://github.com/ygcahyono/nanoclaw-v1.0",
+    "description": "Clio, my WhatsApp AI assistant — what it can do.",
+    "href": "nanoclaw/",
     "summary": "nanoclaw/summary.json",
     "stale_after_days": 7
   }
