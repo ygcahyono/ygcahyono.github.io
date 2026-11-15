@@ -20,7 +20,10 @@ h1{margin:0 0 .25rem}
 .sub{color:var(--muted);font-size:.9rem;margin:0 0 1.5rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:1rem}
 .card{padding:1rem 1.1rem;border:1px solid var(--border);border-radius:12px;background:var(--card)}
-.card h2{margin:0 0 .15rem;font-size:1.05rem}
+.cat{margin:0 0 2rem}
+.cat h2{margin:0 0 .15rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.cat .blurb{margin:0 0 .75rem;color:var(--muted);font-size:.85rem}
+.card h3{margin:0 0 .15rem;font-size:1.05rem}
 .where{margin:0 0 .6rem;color:var(--muted);font-size:.8rem}
 .card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.4rem}
 .card li{font-size:.88rem}
@@ -34,72 +37,98 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;ba
   <h1>🦞 Clio</h1>
   <p class="sub">My WhatsApp AI assistant (NanoClaw). A reminder of what it can do.</p>
 
-  <div class="grid">
-    <section class="card">
-      <h2>💬 Ask anything</h2>
-      <p class="where">Claw group: just type. Other groups: start with <code>@Clio</code></p>
-      <ul>
-        <li>Web search and read pages, drive a browser</li>
-        <li>Read and write files in its folders</li>
-        <li>Set up recurring tasks ("every Monday 8am…")</li>
-        <li>Remembers context per group</li>
-      </ul>
-    </section>
+  <section class="cat">
+    <h2>Ask &amp; automate</h2>
+    <p class="blurb">A Claude agent on call, plus quick checks on the bot itself.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>💬 Ask anything</h3>
+        <p class="where">Claw group: just type. Other groups: start with <code>@Clio</code></p>
+        <ul>
+          <li>Web search and read pages, drive a browser</li>
+          <li>Read and write files in its folders</li>
+          <li>Set up recurring tasks ("every Monday 8am…")</li>
+          <li>Remembers context per group</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>☀️ Good morning</h3>
+        <p class="where">Any group</p>
+        <ul>
+          <li>"Good morning" → daily brief: due reminders, active scheduled tasks, bot health</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🖥 Remote control</h3>
+        <p class="where">Claw group only</p>
+        <ul>
+          <li><code>/remote-control</code> → link to a Claude Code session on the Mac</li>
+          <li><code>/remote-control-end</code> → stop it</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>🎙 Voice journal</h2>
-      <p class="where">Journal group</p>
-      <ul>
-        <li><code>!j</code> then a voice note → themed entry for today, with rating</li>
-        <li><code>!jy</code> → same, for yesterday</li>
-        <li><code>!c</code> then corrected text → replaces today's entry</li>
-        <li>Picks up reminders: "remind me to X on Y"</li>
-        <li>Nudges at 8 pm if there's no entry yet</li>
-      </ul>
-    </section>
+  <section class="cat">
+    <h2>Reflect</h2>
+    <p class="blurb">Talk through the day; Clio writes it up.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>🎙 Voice journal</h3>
+        <p class="where">Journal group</p>
+        <ul>
+          <li><code>!j</code> then a voice note → themed entry for today, with rating</li>
+          <li><code>!jy</code> → same, for yesterday</li>
+          <li><code>!c</code> then corrected text → replaces today's entry</li>
+          <li>Picks up reminders: "remind me to X on Y"</li>
+          <li>Nudges at 8 pm if there's no entry yet</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>✅ To-do</h2>
-      <p class="where">Any group</p>
-      <ul>
-        <li><code>!todo buy milk</code> → added, auto-categorised</li>
-        <li><code>!todo list</code> → active items by category</li>
-        <li><code>!todo done 3</code> · <code>!todo delete 3</code></li>
-        <li><code>!todo history</code> → done in the last 7 days</li>
-      </ul>
-    </section>
+  <section class="cat">
+    <h2>Capture &amp; organise</h2>
+    <p class="blurb">Drop things in from any chat so they don't get lost.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>✅ To-do</h3>
+        <p class="where">Any group</p>
+        <ul>
+          <li><code>!todo buy milk</code> → added, auto-categorised</li>
+          <li><code>!todo list</code> → active items by category</li>
+          <li><code>!todo done 3</code> · <code>!todo delete 3</code></li>
+          <li><code>!todo history</code> → done in the last 7 days</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🔖 Saved links</h3>
+        <p class="where">Any group</p>
+        <ul>
+          <li><code>!save &lt;url&gt; [note]</code> → save a link</li>
+          <li><code>!links</code> → list saved links</li>
+          <li><code>!save search &lt;query&gt;</code> · <code>!save delete 3</code></li>
+          <li><code>!save export</code> → all links as markdown</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>🔖 Saved links</h2>
-      <p class="where">Any group</p>
-      <ul>
-        <li><code>!save &lt;url&gt; [note]</code> → save a link</li>
-        <li><code>!links</code> → list saved links</li>
-        <li><code>!save search &lt;query&gt;</code> · <code>!save delete 3</code></li>
-        <li><code>!save export</code> → all links as markdown</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>🎾 Tennis serve sheet</h2>
-      <p class="where">Tennis Bot group</p>
-      <ul>
-        <li>Send a serve video (as a Document for full quality)</li>
-        <li>→ six key moments: start, toss, trophy, racket drop, contact, landing, plus a checklist</li>
-        <li>Caption to change it: "compare with Djokovic", "only trophy"</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>☀️ Status &amp; remote</h2>
-      <p class="where">"Good morning": any group · remote: Claw group only</p>
-      <ul>
-        <li>"Good morning" → instant status reply</li>
-        <li><code>/remote-control</code> → link to a Claude Code session on the Mac</li>
-        <li><code>/remote-control-end</code> → stop it</li>
-      </ul>
-    </section>
-  </div>
+  <section class="cat">
+    <h2>Train</h2>
+    <p class="blurb">Video in, coaching sheet out.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>🎾 Tennis serve sheet</h3>
+        <p class="where">Tennis Bot group</p>
+        <ul>
+          <li>Send a serve video (as a Document for full quality)</li>
+          <li>→ six key moments: start, toss, trophy, racket drop, contact, landing, plus a checklist</li>
+          <li>Caption to change it: "compare with Djokovic", "only trophy"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <p class="foot">Features as of 15 Nov 2026 · <a href="https://github.com/ygcahyono/nanoclaw-v1.0" target="_blank" rel="noopener">Source on GitHub ↗</a></p>
 </main>
