@@ -1,13 +1,13 @@
 [
   {
-    "id": "journal",
-    "name": "Journal",
-    "group": "Inner Work",
-    "icon": "📓",
-    "description": "Daily reflection log — streaks, ratings, heatmap.",
-    "href": "journal/",
-    "summary": "journal/summary.json",
-    "stale_after_days": 2
+    "id": "zomato-ai",
+    "name": "Zomato AI",
+    "group": "Data",
+    "icon": "🍽",
+    "description": "dbt + Snowflake data-engineering project — last code change and commit activity.",
+    "href": "https://github.com/ygcahyono/zomato-ai",
+    "summary": "zomato-ai/summary.json",
+    "stale_after_days": 7
   },
   {
     "id": "servecoach",
@@ -20,6 +20,16 @@
     "stale_after_days": 7
   },
   {
+    "id": "journal",
+    "name": "Journal",
+    "group": "Inner Work",
+    "icon": "📓",
+    "description": "Daily reflection log — streaks, ratings, heatmap.",
+    "href": "journal/",
+    "summary": "journal/summary.json",
+    "stale_after_days": 2
+  },
+  {
     "id": "nanoclaw",
     "name": "NanoClaw",
     "group": "Inner Work",
@@ -27,16 +37,6 @@
     "description": "Clio, my WhatsApp AI assistant — what it can do.",
     "href": "nanoclaw/",
     "summary": "nanoclaw/summary.json",
-    "stale_after_days": 7
-  },
-  {
-    "id": "zomato-ai",
-    "name": "Zomato AI",
-    "group": "Inner Work",
-    "icon": "🍽",
-    "description": "dbt + Snowflake data-engineering project — last code change and commit activity.",
-    "href": "https://github.com/ygcahyono/zomato-ai",
-    "summary": "zomato-ai/summary.json",
     "stale_after_days": 7
   }
 ]
