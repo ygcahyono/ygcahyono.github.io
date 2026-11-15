@@ -28,5 +28,15 @@
     "href": "nanoclaw/",
     "summary": "nanoclaw/summary.json",
     "stale_after_days": 7
+  },
+  {
+    "id": "zomato-ai",
+    "name": "Zomato AI",
+    "group": "Inner Work",
+    "icon": "🍽",
+    "description": "dbt + Snowflake data-engineering project — last code change and commit activity.",
+    "href": "https://github.com/ygcahyono/zomato-ai",
+    "summary": "zomato-ai/summary.json",
+    "stale_after_days": 7
   }
 ]

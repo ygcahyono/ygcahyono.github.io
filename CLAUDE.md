@@ -24,6 +24,7 @@ Read `docs/dashboard.md` §0 before touching anything under `dashboard/`.
 | journal | `dashboard/journal/` (generated) | `~/Documents/life-love-distraction/100 Daily/*.md` (Obsidian vault) via `scripts/build_journal_stats.py` | launchd `online.ygtc.journal-stats`, daily 23:30 → `scripts/refresh-and-push.sh` |
 | servecoach | external → private GitHub repo | `../servecoach` git activity via `scripts/build_folder_activity.py` → `dashboard/servecoach/summary.json` | same launchd job |
 | nanoclaw | `dashboard/nanoclaw/` (hand-written feature cheat sheet) | `../nanoclaw` git activity via `scripts/build_folder_activity.py` → `dashboard/nanoclaw/summary.json` | same launchd job |
+| zomato-ai | external → private GitHub repo | `../zomato AI` git activity via `scripts/build_folder_activity.py` → `dashboard/zomato-ai/summary.json` | same launchd job |
 
 To add another code-folder tile: add a `build_folder_activity.py <id> <path>`
 line and the `dashboard/<id>` path in **both** `scripts/install-launchd.sh`

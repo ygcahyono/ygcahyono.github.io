@@ -80,7 +80,8 @@ block the other tiles; the tile just goes stale.
 Current projects: `journal` (generated sub-page), `nanoclaw` (hand-written
 "what Clio can do" sub-page — update `dashboard/nanoclaw/index.html` by hand
 when features change; commands only, no numbers/JIDs/paths) and `servecoach`
-(link to its private GitHub repo). Code tiles go stale after 7 days.
+and `zomato-ai` (links to their private GitHub repos). Code tiles go stale
+after 7 days.
 
 Preview locally with `python3 -m http.server` from the repo root, then open
 `http://localhost:8000/dashboard/` (the hub uses `fetch`, so `file://`
