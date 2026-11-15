@@ -30,10 +30,11 @@ cd "$REPO_DIR"
 "$PYTHON_BIN" scripts/build_journal_stats.py
 # Folder-activity tiles: a failure here only staleness-flags that tile.
 "$PYTHON_BIN" scripts/build_folder_activity.py servecoach "$(dirname "$REPO_DIR")/servecoach" || echo "servecoach refresh failed" >&2
+"$PYTHON_BIN" scripts/build_folder_activity.py nanoclaw "$(dirname "$REPO_DIR")/nanoclaw-v1.0" || echo "nanoclaw refresh failed" >&2
 # Stage only the artifacts we own.
-git add _data/journal_stats.json dashboard/journal dashboard/servecoach 2>/dev/null || true
-if ! git diff --cached --quiet -- _data/journal_stats.json dashboard/journal dashboard/servecoach; then
-  git commit -m "chore: refresh dashboard stats" -- _data/journal_stats.json dashboard/journal dashboard/servecoach
+git add _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw 2>/dev/null || true
+if ! git diff --cached --quiet -- _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw; then
+  git commit -m "chore: refresh dashboard stats" -- _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw
   git push
   echo "Pushed updated stats."
 else

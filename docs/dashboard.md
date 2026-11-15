@@ -77,8 +77,8 @@ runner in **both** `scripts/install-launchd.sh` (template) and
 `scripts/refresh-and-push.sh`. A failure there is logged but does not
 block the other tiles; the tile just goes stale.
 
-Current projects: `journal` (sub-page), `servecoach` (links to the private
-GitHub repo, stale after 7 days).
+Current projects: `journal` (sub-page), `servecoach` and `nanoclaw` (link to
+their private GitHub repos, stale after 7 days).
 
 Preview locally with `python3 -m http.server` from the repo root, then open
 `http://localhost:8000/dashboard/` (the hub uses `fetch`, so `file://`
