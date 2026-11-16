@@ -39,7 +39,7 @@ described in the rest of this doc is the first project, at
    | Field | Required | Notes |
    |---|---|---|
    | `id`, `name`, `href` | ✅ | `href` is relative (`my-project/` → sub-page) or absolute `https://…` (opens in a new tab, tile shows ↗). |
-   | `group` | – | Section heading the tile sits under. Current groups, top to bottom: **Data** (data engineering), **Revenue** (money-making), **Inner Work** (self-development). Sections appear in order of first use, so insert new entries next to their group; missing → "Other". |
+   | `group` | – | Section heading the tile sits under. Current groups, in order: **Inner Work** (self-development), **Data** (data engineering), **Revenue** (money-making). The hub flows them into two balanced columns (left column first). Sections appear in order of first use, so insert new entries next to their group; missing → "Other". |
    | `icon`, `description` | – | Emoji + one line. |
    | `summary` | – | Path to a tile-stats JSON. Omit for a plain link tile (no status dot). |
    | `stale_after_days` | – | Tile turns amber when `summary.as_of` is older than this. |

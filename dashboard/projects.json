@@ -1,25 +1,5 @@
 [
   {
-    "id": "zomato-ai",
-    "name": "Zomato AI",
-    "group": "Data",
-    "icon": "🍽",
-    "description": "dbt + Snowflake data-engineering project — last code change and commit activity.",
-    "href": "https://github.com/ygcahyono/zomato-ai",
-    "summary": "zomato-ai/summary.json",
-    "stale_after_days": 7
-  },
-  {
-    "id": "servecoach",
-    "name": "ServeCoach",
-    "group": "Revenue",
-    "icon": "🎾",
-    "description": "Serve-coaching app — last code change and commit activity.",
-    "href": "https://github.com/ygcahyono/servecoach",
-    "summary": "servecoach/summary.json",
-    "stale_after_days": 7
-  },
-  {
     "id": "journal",
     "name": "Journal",
     "group": "Inner Work",
@@ -37,6 +17,26 @@
     "description": "Clio, my WhatsApp AI assistant — what it can do.",
     "href": "nanoclaw/",
     "summary": "nanoclaw/summary.json",
+    "stale_after_days": 7
+  },
+  {
+    "id": "zomato-ai",
+    "name": "Zomato AI",
+    "group": "Data",
+    "icon": "🍽",
+    "description": "dbt + Snowflake data-engineering project — last code change and commit activity.",
+    "href": "https://github.com/ygcahyono/zomato-ai",
+    "summary": "zomato-ai/summary.json",
+    "stale_after_days": 7
+  },
+  {
+    "id": "servecoach",
+    "name": "ServeCoach",
+    "group": "Revenue",
+    "icon": "🎾",
+    "description": "Serve-coaching app — last code change and commit activity.",
+    "href": "https://github.com/ygcahyono/servecoach",
+    "summary": "servecoach/summary.json",
     "stale_after_days": 7
   }
 ]
