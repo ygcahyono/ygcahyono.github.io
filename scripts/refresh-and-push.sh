@@ -10,6 +10,8 @@ cd "/Users/yogi/Projects/ygcahyono.github.io"
 git add _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw dashboard/zomato-ai 2>/dev/null || true
 if ! git diff --cached --quiet -- _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw dashboard/zomato-ai; then
   git commit -m "chore: refresh dashboard stats" -- _data/journal_stats.json dashboard/journal dashboard/servecoach dashboard/nanoclaw dashboard/zomato-ai
+  # Pick up commits pushed from elsewhere, or the push is rejected.
+  git pull --rebase --autostash || { git rebase --abort 2>/dev/null; exit 1; }
   git push
   echo "Pushed updated stats."
 else

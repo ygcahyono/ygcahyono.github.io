@@ -92,8 +92,8 @@ won't work).
 ## 1. Problem statement
 
 I keep a personal journal as flat markdown in
-`~/Documents/life-love-distraction/100 Daily/` (an Obsidian vault). The folder lives outside
-this repo and is iCloud-synced, pinned with Finder's "Keep Downloaded".
+`~/Projects/obsidian-vault/life-love-distraction/100 Daily/` (an Obsidian vault). The folder
+lives outside this repo and is local-only (not iCloud-synced).
 I want a **private, evolving** page on my public Jupyter Book site
 (`ygtc.me`) that shows aggregated progress — streaks, ratings, calendar
 heatmap — without ever exposing the raw journal text.
@@ -103,7 +103,7 @@ heatmap — without ever exposing the raw journal text.
 | # | Constraint | Implication |
 |---|---|---|
 | C1 | Site is **MyST / Jupyter Book v2**, deployed via GitHub Actions to public GitHub Pages. | No backend, no auth, no private routes. Anything served is potentially world-readable. |
-| C2 | Journal lives in a local (iCloud-pinned) folder on my Mac. | GitHub Actions cannot read it during build. Any preprocessing must run locally. |
+| C2 | Journal lives in a local-only folder on my Mac. | GitHub Actions cannot read it during build. Any preprocessing must run locally. |
 | C3 | Only reliably-structured field per entry is `**Rating: X/10**`. Sections are free-form. | Heuristic extraction; tolerate missing fields. |
 | C4 | "Private" really means: **aggregate-only data leaves my Mac**, plus an unlisted URL. | Two layers of defense — sanitization at build time, obscurity at serve time. |
 
@@ -434,6 +434,12 @@ self-host the file if this becomes a problem.
 - **2026-10-25** — Hub tiles grouped under headings (`group` field):
   Inner Work (Journal), Revenue (ServeCoach). Journal tile shows latest
   entry date instead of 30-day average.
+- **2026-11-22** — Vault moved out of iCloud to
+  `~/Projects/obsidian-vault/life-love-distraction/100 Daily/` (local-only); updated
+  `JOURNAL_DIR`. Ends the iCloud eviction failures (`Resource deadlock avoided`), so
+  "Keep Downloaded" pinning no longer applies. The nightly job now runs
+  `git pull --rebase --autostash` before pushing; a rejected push had left the
+  site stuck at 14 Nov after hub commits landed on `main` from elsewhere.
 - **2026-11-13** — Journal source moved to `life-love-distraction/100 Daily/`.
   All of `Main/Journal/` (71 entries plus the writing-coach skill, `writing-progress.md`,
   `tennis_journal.md`, `Coach Feedback/`) was moved in; there were no name collisions.

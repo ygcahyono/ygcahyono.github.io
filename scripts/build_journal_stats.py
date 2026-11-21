@@ -3,7 +3,7 @@
 Preprocess private journal entries into a sanitized aggregate dataset and
 regenerate the self-contained public dashboard page.
 
-Inputs:  /Users/yogi/Documents/life-love-distraction/100 Daily/*.md
+Inputs:  /Users/yogi/Projects/obsidian-vault/life-love-distraction/100 Daily/*.md
 Outputs (all safe to commit):
   - _data/journal_stats.json             (canonical aggregate, inspectable)
   - dashboard/journal/index.html         (self-contained page, data + CSS + JS inlined)
@@ -23,7 +23,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-JOURNAL_DIR = Path("/Users/yogi/Documents/life-love-distraction/100 Daily")
+JOURNAL_DIR = Path("/Users/yogi/Projects/obsidian-vault/life-love-distraction/100 Daily")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_OUTPUT = REPO_ROOT / "_data" / "journal_stats.json"
 PAGE_OUTPUT = REPO_ROOT / "dashboard" / "journal" / "index.html"
