@@ -1,17 +1,17 @@
 {
-  "as_of": "2026-11-14",
+  "as_of": "2026-11-21",
   "stats": [
     {
       "label": "Streak",
-      "value": "0 days"
+      "value": "3 days"
     },
     {
       "label": "Entries",
-      "value": "523"
+      "value": "526"
     },
     {
       "label": "Latest",
-      "value": "14 Nov"
+      "value": "21 Nov"
     }
   ]
 }
