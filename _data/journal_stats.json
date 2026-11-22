@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-21T23:24:53Z",
-  "total_entries": 526,
+  "generated_at": "2026-11-22T16:30:01Z",
+  "total_entries": 527,
   "date_range": {
     "start": "2020-05-14",
     "end": "2026-11-22"
   },
-  "current_streak": 3,
+  "current_streak": 4,
   "longest_streak": 63,
   "consistency": {
-    "last_30": 60.0,
-    "last_90": 25.6,
-    "last_365": 24.1
+    "last_30": 63.3,
+    "last_90": 26.7,
+    "last_365": 24.4
   },
   "avg_rating_30d": 7.55,
   "rating_rolling_7d": [
@@ -21470,7 +21470,7 @@
     {
       "date": "2026-11-22",
       "rating": null,
-      "word_count": null
+      "word_count": 239
     }
   ],
   "tag_frequency": [
