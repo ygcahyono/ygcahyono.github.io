@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-22T16:30:01Z",
-  "total_entries": 527,
+  "generated_at": "2026-11-23T16:30:06Z",
+  "total_entries": 528,
   "date_range": {
     "start": "2020-05-14",
-    "end": "2026-11-22"
+    "end": "2026-11-23"
   },
-  "current_streak": 4,
+  "current_streak": 5,
   "longest_streak": 63,
   "consistency": {
     "last_30": 63.3,
-    "last_90": 26.7,
-    "last_365": 24.4
+    "last_90": 27.8,
+    "last_365": 24.7
   },
-  "avg_rating_30d": 7.55,
+  "avg_rating_30d": 7.6,
   "rating_rolling_7d": [
     {
       "date": "2020-05-14",
@@ -9548,6 +9548,10 @@
     },
     {
       "date": "2026-11-22",
+      "avg": null
+    },
+    {
+      "date": "2026-11-23",
       "avg": null
     }
   ],
@@ -21471,6 +21475,11 @@
       "date": "2026-11-22",
       "rating": null,
       "word_count": 239
+    },
+    {
+      "date": "2026-11-23",
+      "rating": null,
+      "word_count": 84
     }
   ],
   "tag_frequency": [
